@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>政治与国际关系学院团委·青年发展部</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --red: #B0121D;
+    --red-dark: #8B0D16;
+    --red-light: #C8323C;
+    --gold: #C9A24B;
+    --bg: #F6F4EF;
+    --text: #333;
+    --text-light: #666;
+    --line: #E5E0D6;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans SC", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; }
+
+  /* ===== 顶部信息栏 ===== */
+  .topbar { background: #fff; border-bottom: 1px solid var(--line); font-size: 13px; color: var(--text-light); padding: 8px 0; }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  .topbar .date { color: var(--red); }
+
+  /* ===== 头部 ===== */
+  .header { background: linear-gradient(180deg, #fff 0%, #FAF7F1 100%); border-bottom: 3px solid var(--red); }
+  .header .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; display: flex; align-items: center; gap: 18px; }
+  .header img { height: 62px; width: auto; }
+  .header .titles h1 { font-size: 26px; color: var(--red); letter-spacing: 2px; font-weight: 700; }
+  .header .titles h2 { font-size: 15px; color: var(--text-light); font-weight: 400; letter-spacing: 1px; margin-top: 4px; }
+  .header .titles h2 em { color: var(--red); font-style: normal; font-weight: 600; }
+
+  /* ===== 导航 ===== */
+  nav { background: var(--red); position: sticky; top: 0; z-index: 99; box-shadow: 0 2px 8px rgba(0,0,0,.15); }
+  nav .wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; }
+  nav a { color: #fff; padding: 14px 20px; font-size: 15px; letter-spacing: 1px; border-right: 1px solid rgba(255,255,255,.18); transition: background .2s; white-space: nowrap; }
+  nav a:hover, nav a.active { background: var(--red-dark); }
+  nav a:first-child { border-left: 1px solid rgba(255,255,255,.18); }
+
+  /* ===== 横幅 ===== */
+  .banner { background: linear-gradient(120deg, var(--red-dark) 0%, var(--red) 45%, #D8494F 100%); color: #fff; text-align: center; padding: 72px 20px 62px; position: relative; overflow: hidden; }
+  .banner::before, .banner::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.05); }
+  .banner::before { width: 420px; height: 420px; top: -180px; right: -100px; }
+  .banner::after { width: 320px; height: 320px; bottom: -160px; left: -80px; }
+  .banner .inner { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .banner .small { font-size: 15px; letter-spacing: 6px; opacity: .9; }
+  .banner h2 { font-size: 42px; letter-spacing: 8px; margin: 16px 0 10px; font-weight: 700; }
+  .banner .sub { font-size: 16px; opacity: .95; letter-spacing: 2px; }
+  .banner .slogan { display: inline-block; margin-top: 26px; padding: 8px 30px; border: 1px solid rgba(255,255,255,.6); border-radius: 30px; font-size: 16px; letter-spacing: 4px; }
+
+  /* ===== 通用区块 ===== */
+  section { max-width: 1200px; margin: 0 auto; padding: 56px 20px 20px; }
+  .sec-title { text-align: center; margin-bottom: 40px; }
+  .sec-title .cn { font-size: 30px; color: var(--red); font-weight: 700; letter-spacing: 4px; }
+  .sec-title .en { font-size: 13px; color: #B9B0A0; letter-spacing: 3px; text-transform: uppercase; margin-top: 6px; }
+  .sec-title::after { content: ""; display: block; width: 60px; height: 3px; background: var(--gold); margin: 14px auto 0; }
+  .card { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 28px; }
+  .card:hover { box-shadow: 0 6px 20px rgba(176,18,29,.08); }
+
+  /* ===== 部门简介 ===== */
+  .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: center; }
+  .intro .lead { font-size: 15.5px; }
+  .intro .lead strong { color: var(--red); }
+  .intro .lead p { margin-bottom: 14px; }
+  .intro .lead .quote { border-left: 4px solid var(--gold); background: #FBF8F2; padding: 12px 16px; margin-top: 6px; font-size: 14.5px; color: #7A6F5C; }
+  .intro .goals { display: grid; gap: 14px; }
+  .goal { background: #fff; border-left: 4px solid var(--red); padding: 16px 20px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
+  .goal h4 { font-size: 16px; color: var(--red-dark); margin-bottom: 4px; }
+  .goal p { font-size: 13.5px; color: var(--text-light); }
+
+  /* ===== 主要工作 ===== */
+  .works { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+  .work { text-align: center; }
+  .work .icon { width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 50%; background: linear-gradient(135deg, var(--red), var(--red-light)); color: #fff; font-size: 30px; display: flex; align-items: center; justify-content: center; }
+  .work h4 { font-size: 17px; margin-bottom: 8px; }
+  .work p { font-size: 13.5px; color: var(--text-light); text-align: left; }
+
+  /* ===== 流程 ===== */
+  .steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .step { position: relative; text-align: center; padding: 18px 8px 14px; }
+  .step::after { content: "→"; position: absolute; right: -10px; top: 34px; color: var(--gold); font-size: 20px; }
+  .step:last-child::after { display: none; }
+  .step .n { width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 50%; background: var(--red); color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+  .step h5 { font-size: 14px; margin-bottom: 4px; }
+  .step p { font-size: 12px; color: var(--text-light); }
+
+  /* ===== 品牌项目 ===== */
+  .projects { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .project { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 24px 22px; position: relative; overflow: hidden; }
+  .project::before { content: attr(data-no); position: absolute; right: 8px; top: 4px; font-size: 46px; font-weight: 700; color: rgba(176,18,29,.08); }
+  .project .tag { display: inline-block; background: var(--red); color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 3px; letter-spacing: 1px; margin-bottom: 10px; }
+  .project h4 { font-size: 16px; color: var(--red-dark); margin-bottom: 6px; }
+  .project p { font-size: 13.5px; color: var(--text-light); }
+
+  /* ===== 成果数据 ===== */
+  .stats { background: linear-gradient(135deg, var(--red-dark), var(--red)); border-radius: 8px; color: #fff; padding: 40px 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+  .stat .num { font-size: 40px; font-weight: 700; }
+  .stat .num i { font-style: normal; font-size: 24px; }
+  .stat .label { font-size: 14px; opacity: .92; letter-spacing: 1px; }
+
+  .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 26px; }
+  .point { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 24px 22px; }
+  .point .pno { font-size: 13px; color: var(--gold); letter-spacing: 2px; font-weight: 600; }
+  .point h4 { font-size: 16px; color: var(--red-dark); margin: 6px 0 8px; }
+  .point p { font-size: 13.5px; color: var(--text-light); }
+
+  /* ===== 照片墙 ===== */
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 26px; }
+  .gallery figure { position: relative; overflow: hidden; border-radius: 6px; box-shadow: 0 3px 10px rgba(0,0,0,.1); }
+  .gallery img { width: 100%; height: 235px; object-fit: cover; display: block; transition: transform .4s; }
+  .gallery figure:hover img { transform: scale(1.05); }
+  .gallery figcaption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,.75)); color: #fff; padding: 34px 12px 10px; font-size: 13.5px; }
+
+  /* ===== 时间线 ===== */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(180deg, var(--red), var(--gold)); }
+  .tl-item { position: relative; padding: 0 0 24px 8px; }
+  .tl-item::before { content: ""; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 3px solid var(--red); }
+  .tl-item .date { font-size: 13px; color: var(--red); font-weight: 600; letter-spacing: 1px; }
+  .tl-item .txt { font-size: 15px; margin-top: 2px; }
+  .tl-item .txt small { color: var(--text-light); font-size: 13px; display: block; margin-top: 2px; }
+
+  /* ===== 成员 ===== */
+  .members { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .member { text-align: center; }
+  .member .photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 8px; border: 3px solid #fff; box-shadow: 0 4px 14px rgba(0,0,0,.12); }
+  .member h4 { margin-top: 14px; font-size: 18px; color: var(--red-dark); }
+  .member .post { font-size: 13px; color: var(--gold); font-weight: 600; letter-spacing: 2px; margin: 2px 0 8px; }
+  .member p { font-size: 13.5px; color: var(--text-light); font-style: italic; }
+
+  /* ===== 部门建设 ===== */
+  .teamwork { display: grid; grid-template-columns: 1.2fr 1fr; gap: 26px; align-items: start; }
+  .teamwork h4 { font-size: 17px; color: var(--red-dark); margin-bottom: 12px; }
+  .teamwork ul { list-style: none; }
+  .teamwork li { padding: 6px 0; font-size: 14.5px; }
+  .teamwork li::before { content: "◆"; color: var(--red); font-size: 10px; margin-right: 8px; vertical-align: 2px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag { background: #fff; border: 1px solid #D8CFC0; color: #7A6F5C; padding: 6px 14px; border-radius: 20px; font-size: 13px; }
+
+  /* ===== 通知公告 ===== */
+  .notices { background: #fff; border: 1px solid var(--line); border-radius: 6px; }
+  .notice { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 22px; border-bottom: 1px dashed var(--line); }
+  .notice:last-child { border-bottom: none; }
+  .notice .tag { flex: none; background: var(--red); color: #fff; font-size: 12px; padding: 2px 10px; border-radius: 3px; letter-spacing: 1px; }
+  .notice .title { flex: 1; font-size: 15px; }
+  .notice .title:hover { color: var(--red); }
+  .notice .d { flex: none; color: var(--text-light); font-size: 13px; }
+
+  /* ===== 页脚 ===== */
+  footer { background: #3A3A3A; color: #C9C9C9; margin-top: 60px; padding: 30px 0 40px; text-align: center; font-size: 13.5px; line-height: 2; }
+  footer .org { color: #fff; font-size: 15px; letter-spacing: 2px; }
+  footer .red { color: var(--red-light); }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 960px) {
+    .intro, .teamwork { grid-template-columns: 1fr; }
+    .works { grid-template-columns: repeat(2, 1fr); }
+    .projects { grid-template-columns: repeat(2, 1fr); }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .points, .gallery { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .members { grid-template-columns: repeat(2, 1fr); }
+    .header .wrap { flex-wrap: wrap; }
+    nav .wrap { overflow-x: auto; }
+  }
+  @media (max-width: 520px) {
+    .banner h2 { font-size: 30px; letter-spacing: 4px; }
+    .works, .projects { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .members { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部信息栏 -->
+<div class="topbar">
+  <div class="wrap">
+    <span>欢迎访问华中师范大学政治与国际关系学院团委 · 青年发展部</span>
+    <span class="date" id="today"></span>
+  </div>
+</div>
+
+<!-- 头部 -->
+<div class="header">
+  <div class="wrap">
+    <img src="__IMG_LOGO__" alt="华中师范大学政治与国际关系学院">
+    <div class="titles">
+      <h1>政治与国际关系学院团委</h1>
+      <h2>青年发展部 · <em>以青春赴山海，为青年成长铺路</em></h2>
+    </div>
+  </div>
+</div>
+
+<!-- 导航 -->
+<nav>
+  <div class="wrap">
+    <a href="#home" class="active">首页</a>
+    <a href="#about">部门简介</a>
+    <a href="#works">主要工作</a>
+    <a href="#projects">品牌项目</a>
+    <a href="#achievement">工作成果</a>
+    <a href="#news">工作动态</a>
+    <a href="#members">成员介绍</a>
+    <a href="#notices">通知公告</a>
+  </div>
+</nav>
+
+<!-- 横幅 -->
+<div class="banner" id="home">
+  <div class="inner">
+    <div class="small">华中师范大学 · 政治与国际关系学院团委</div>
+    <h2>青年发展部</h2>
+    <div class="sub">锤炼政治素养 · 打磨综合能力 · 护航青年成长</div>
+    <div class="slogan">以青春赴山海 · 怀一腔少年锐气</div>
+  </div>
+</div>
+
+<!-- 部门简介 -->
+<section id="about">
+  <div class="sec-title">
+    <div class="cn">部门简介</div>
+    <div class="en">About Us</div>
+  </div>
+  <div class="intro">
+    <div class="lead card">
+      <p><strong>青年发展部</strong>是政治与国际关系学院团委的核心职能部门，致力于为全院学子搭建成长舞台，<strong>打通青年发展通道</strong>。</p>
+      <p>我们以<strong>锤炼政治素养、打磨综合能力、护航青年成长</strong>为方向，充当学院团委联系青年、服务青年的"桥梁"与"助推器"，聚焦团员发展与骨干培养两条主线，服务学院团学工作大局。</p>
+      <p>从团员发展到骨干培养，从品牌活动到日常团务，青年发展部始终与每一位政国青年同行。</p>
+      <div class="quote">"初入政国的你，是不是总觉得'青年担当'有些抽象，想要真正付诸行动？别迷茫！你的期待，在青年发展部都可以实现！"</div>
+    </div>
+    <div class="goals">
+      <div class="goal">
+        <h4>团员发展规范化</h4>
+        <p>规范团员发展流程，组织入团积极分子培训班与考核，落实新团员发展及智慧团建录入，护航团员发展全流程。</p>
+      </div>
+      <div class="goal">
+        <h4>推优入党服务化</h4>
+        <p>协助开展共青团推优入党工作，制定量化考核标准，统筹民主评议与答辩考核，服务团员向党组织靠拢。</p>
+      </div>
+      <div class="goal">
+        <h4>骨干培养品牌化</h4>
+        <p>承办院级"青马工程""恽代英菁英学校""共青团改革创新赋能荟"等重点品牌活动，锻造青年政治骨干。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 主要工作 -->
+<section id="works">
+  <div class="sec-title">
+    <div class="cn">主要工作</div>
+    <div class="en">Main Works</div>
+  </div>
+  <div class="works">
+    <div class="work card">
+      <div class="icon">团</div>
+      <h4>团员发展</h4>
+      <p>入团意愿收集 → 入团申请书 → 入团积极分子培训班 → 结业考试 → 志愿书填写 → 档案管理、智慧团建录入，全流程规范推进。</p>
+    </div>
+    <div class="work card">
+      <div class="icon">党</div>
+      <h4>推优入党</h4>
+      <p>制定量化考核标准，统筹民主评议与答辩考核，组织入党积极分子培训参训统计，为党组织输送优秀青年。</p>
+    </div>
+    <div class="work card">
+      <div class="icon">育</div>
+      <h4>品牌项目</h4>
+      <p>承办"青马工程"培训班、团干系列培训、恽代英菁英学校学员遴选与组织、"共青团改革创新赋能荟"等活动。</p>
+    </div>
+    <div class="work card">
+      <div class="icon">务</div>
+      <h4>日常团务</h4>
+      <p>月报半月报、中期检查材料、年度总结、台账管理、部门例会与培训、信息收集与通知发布等基础工作。</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="sec-title" style="margin-bottom:24px;">
+      <div class="cn" style="font-size:22px;">入团发展流程图</div>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h5>意愿收集</h5><p>收集入团意愿名单</p></div>
+      <div class="step"><div class="n">2</div><h5>提交申请</h5><p>递交入团申请书</p></div>
+      <div class="step"><div class="n">3</div><h5>培训学习</h5><p>入团积极分子培训班</p></div>
+      <div class="step"><div class="n">4</div><h5>结业考试</h5><p>考核测评与阅卷</p></div>
+      <div class="step"><div class="n">5</div><h5>志愿书填写</h5><p>档案袋、团员证归档</p></div>
+      <div class="step"><div class="n">6</div><h5>智慧团建</h5><p>系统录入、名单公示</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 品牌项目 -->
+<section id="projects">
+  <div class="sec-title">
+    <div class="cn">品牌项目</div>
+    <div class="en">Brand Programs</div>
+  </div>
+  <div class="projects">
+    <div class="project" data-no="01">
+      <span class="tag">青马工程</span>
+      <h4>"青马工程"培训班</h4>
+      <p>青年马克思主义者培养工程，通过系统理论学习与实践锻炼，培养信仰坚定、能力突出的青年政治骨干，2025年10月27日正式开班。</p>
+    </div>
+    <div class="project" data-no="02">
+      <span class="tag">训练营</span>
+      <h4>"知行菁英"成长训练营</h4>
+      <p>学生骨干成长训练营，以"知行合一"为理念，通过系统化培训与实践活动，全面提升学生骨干综合素质与履职能力。</p>
+    </div>
+    <div class="project" data-no="03">
+      <span class="tag">赋能荟</span>
+      <h4>共青团改革创新赋能荟</h4>
+      <p>围绕STAR模型应用、基层团建凝聚力提升、文科生科创路径等主题开展经验分享与专题研讨，推动团学工作创新发展。</p>
+    </div>
+    <div class="project" data-no="04">
+      <span class="tag">菁英学校</span>
+      <h4>恽代英菁英学校</h4>
+      <p>组织基层学生骨干班学员遴选推荐与材料报送，为学校"恽代英菁英学校"输送优秀青年骨干。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 工作成果 -->
+<section id="achievement">
+  <div class="sec-title">
+    <div class="cn">工作成果 · 2025年度</div>
+    <div class="en">Achievements</div>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="num">36<i>人</i></div><div class="label">年度发展新团员</div></div>
+    <div class="stat"><div class="num">10<i>场</i></div><div class="label">学生干部系统培训</div></div>
+    <div class="stat"><div class="num">8<i>期</i></div><div class="label">改革创新赋能荟</div></div>
+    <div class="stat"><div class="num">2<i>轮</i></div><div class="label">团员发展工作</div></div>
+  </div>
+  <div class="points">
+    <div class="point">
+      <div class="pno">亮点一</div>
+      <h4>学生干部系统培训</h4>
+      <p>2025年学院团委开展10场学生干部培训，涵盖融媒体运营、宣传排版、财务报销规范、工作礼仪等实务板块，夯实综合履职能力，推动团学工作高效规范落地。</p>
+    </div>
+    <div class="point">
+      <div class="pno">亮点二</div>
+      <h4>团务发展规范化</h4>
+      <p>严格依照入团流程开展两轮团员发展工作，组织团课培训与入团考试，严格审批流程，全年共发展新团员36人，夯实组织基础。</p>
+    </div>
+    <div class="point">
+      <div class="pno">亮点三</div>
+      <h4>改革创新赋能交流</h4>
+      <p>11月23日，2025年第8期共青团改革创新赋能荟在文华公书林模拟联合国实验室举行，围绕基层团建凝聚力提升等主题交流研讨，推动团学工作创新发展。</p>
+    </div>
+  </div>
+  <div class="gallery">
+    <figure><img src="__IMG_ACT_RUTUAN25__" alt="2025年入团积极分子联合培训"><figcaption>2025年入团积极分子联合培训班开班仪式</figcaption></figure>
+    <figure><img src="__IMG_ACT_QINGMA__" alt="青马工程培训班"><figcaption>2025年"青马工程"培训班暨秋季团干培训</figcaption></figure>
+    <figure><img src="__IMG_ACT_FUNENG__" alt="共青团改革创新赋能荟"><figcaption>2025年第8期共青团改革创新赋能荟</figcaption></figure>
+    <figure><img src="__IMG_ACT_RUTUAN26__" alt="2026年入团积极分子联合培训"><figcaption>2026年入团积极分子联合培训</figcaption></figure>
+    <figure><img src="__IMG_ACT_RUDANG__" alt="汇总入党申请人信息"><figcaption>协助推优入党 · 汇总入党申请人信息</figcaption></figure>
+    <figure><img src="__IMG_ACT_TUANJIAN__" alt="部门团建活动"><figcaption>冬至团建 · 部门成员齐聚一堂</figcaption></figure>
+  </div>
+</section>
+
+<!-- 工作动态 -->
+<section id="news">
+  <div class="sec-title">
+    <div class="cn">工作动态</div>
+    <div class="en">News & Timeline</div>
+  </div>
+  <div class="card">
+    <div class="timeline">
+      <div class="tl-item"><div class="date">2026.09</div><div class="txt">完成迎新系列工作，开展团委、学生会、融媒体中心联合招新与面试选拔。<small>组织2026级新生意向入团名单收集</small></div></div>
+      <div class="tl-item"><div class="date">2026.06.10</div><div class="txt">完成2026年上半年新发展团员档案归档，组织入团积极分子考试并公示成绩与名单。</div></div>
+      <div class="tl-item"><div class="date">2026.03—05</div><div class="txt">组织2026年上半年入团积极分子培训班，完成开班仪式、课程学习与结业考核。</div></div>
+      <div class="tl-item"><div class="date">2026.01</div><div class="txt">印发《基层团委团干部及工作骨干选拔方案（试行）》，启动基层团干部选拔培养工作。</div></div>
+      <div class="tl-item"><div class="date">2025.12.21</div><div class="txt">组织冬至节日活动，部门成员齐聚一堂、共度佳节，团队凝聚力进一步提升。</div></div>
+      <div class="tl-item"><div class="date">2025.12</div><div class="txt">推进学生骨干成长训练营相关工作，系统化培训提升骨干综合素质与履职能力。</div></div>
+      <div class="tl-item"><div class="date">2025.11.19—23</div><div class="txt">组织团干系列培训及2025年第8期共青团改革创新赋能荟，多维赋能提升团干部业务能力与创新思维。</div></div>
+      <div class="tl-item"><div class="date">2025.11.8—12</div><div class="txt">与新闻传播学院联合举办入团积极分子培训班，深化两院团组织协同育人机制。</div></div>
+      <div class="tl-item"><div class="date">2025.10.27</div><div class="txt">举办"青马工程"培训班暨秋季团干培训开班仪式，激发参训学员理论学习热情。</div></div>
+      <div class="tl-item"><div class="date">2025.10.19</div><div class="txt">召开团委部门培训例会，系统讲解常用办公软件的基础操作与使用技巧。</div></div>
+      <div class="tl-item"><div class="date">2025.10.14</div><div class="txt">召开新一轮团员发展工作推进会，梳理入团流程各环节，保障团员发展工作有序推进。</div></div>
+      <div class="tl-item"><div class="date">2025.10.10</div><div class="txt">召开新学期第一次工作例会，明确责任分工，部署新学期部门任务。</div></div>
+      <div class="tl-item"><div class="date">2025.09</div><div class="txt">完成招新系列工作，推进发展团员工作，统计入党积极分子培训参训情况，筹备中期检查材料。</div></div>
+      <div class="tl-item"><div class="date">2025.06.7—15</div><div class="txt">组织开展入团积极分子培训班，系统化课程提升学员政治素养与思想觉悟。</div></div>
+      <div class="tl-item"><div class="date">2025.06.13</div><div class="txt">组织入团积极分子培训考试，为选拔优秀人才、保证新发展团员质量奠定坚实基础。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 成员介绍 -->
+<section id="members">
+  <div class="sec-title">
+    <div class="cn">成员介绍</div>
+    <div class="en">Our Team · 2026—2027</div>
+  </div>
+  <div class="members">
+    <div class="member">
+      <img class="photo" src="__IMG_MEMBER_LZ__" alt="团委副书记 李梓妍">
+      <h4>李梓妍</h4>
+      <div class="post">团委副书记</div>
+      <p>"少年自有万丈光，愿于此相逢，携手共赴山海。"</p>
+    </div>
+    <div class="member">
+      <img class="photo" src="__IMG_MEMBER_HXJ__" alt="部长 黄晰嘉">
+      <h4>黄晰嘉</h4>
+      <div class="post">青年发展部部长</div>
+      <p>"青发，承接你所有未完成的青春提案！"</p>
+    </div>
+    <div class="member">
+      <img class="photo" src="__IMG_MEMBER_LZY__" alt="副部长 黎芷悠">
+      <h4>黎芷悠</h4>
+      <div class="post">青年发展部副部长</div>
+      <p>"保持好奇，大胆尝试——在青发，每一步都算数。"</p>
+    </div>
+    <div class="member">
+      <img class="photo" src="__IMG_MEMBER_LMY__" alt="副部长 罗梦语">
+      <h4>罗梦语</h4>
+      <div class="post">青年发展部副部长</div>
+      <p>"熠熠向前，步步登高。"</p>
+    </div>
+  </div>
+</section>
+
+<!-- 部门建设 -->
+<section id="teamwork">
+  <div class="sec-title">
+    <div class="cn">部门建设</div>
+    <div class="en">Department Building</div>
+  </div>
+  <div class="teamwork">
+    <div class="card">
+      <h4>双主线工作格局</h4>
+      <ul>
+        <li>团员发展主线：入团积极分子培训、新团员发展、智慧团建录入、推优入党全流程服务</li>
+        <li>骨干培养主线：青马工程、团干培训、成长训练营、赋能荟、菁英学校学员遴选</li>
+        <li>常规运转支撑：月报半月报、中期检查、年度总结、台账管理与例会培训</li>
+        <li>协同联动机制：与新闻传播学院联合办班，资源共享、优势互补，深化跨院合作</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>业务分工一览</h4>
+      <div class="tags">
+        <span class="tag">新闻稿撰写</span><span class="tag">文书格式</span>
+        <span class="tag">月报半月报</span><span class="tag">PPT制作</span>
+        <span class="tag">表格制作</span><span class="tag">通知发布</span>
+        <span class="tag">信息收集</span><span class="tag">腾讯文档</span>
+        <span class="tag">资料收集</span><span class="tag">团委信箱</span>
+        <span class="tag">智慧团建</span><span class="tag">台账管理</span>
+        <span class="tag">培训考核录入</span><span class="tag">会议室申请</span>
+        <span class="tag">盖章签字</span><span class="tag">报销</span>
+        <span class="tag">流程制定</span><span class="tag">规划总结</span>
+        <span class="tag">部门例会</span><span class="tag">部门培训</span>
+        <span class="tag">摄影记录</span><span class="tag">沟通协调</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 通知公告 -->
+<section id="notices">
+  <div class="sec-title">
+    <div class="cn">通知公告</div>
+    <div class="en">Announcements</div>
+  </div>
+  <div class="notices">
+    <div class="notice">
+      <span class="tag">选拔方案</span>
+      <span class="title">政治与国际关系学院基层团委团干部及工作骨干选拔方案（2026年1月 试行）</span>
+      <span class="d">2026.01</span>
+    </div>
+    <div class="notice">
+      <span class="tag">公示</span>
+      <span class="title">2026年上半年入团积极分子考试成绩公示及新发展团员名单公示</span>
+      <span class="d">2026.06</span>
+    </div>
+    <div class="notice">
+      <span class="tag">培训</span>
+      <span class="title">2026年入团积极分子培训班课程安排（开班仪式、课程学习、结业考试）</span>
+      <span class="d">2026.03</span>
+    </div>
+    <div class="notice">
+      <span class="tag">评定</span>
+      <span class="title">政治与国际关系学院"星级团员"评定方案</span>
+      <span class="d">2025.12</span>
+    </div>
+    <div class="notice">
+      <span class="tag">考核</span>
+      <span class="title">学院团支部书记述职评议考核方案</span>
+      <span class="d">2025.12</span>
+    </div>
+    <div class="notice">
+      <span class="tag">招新</span>
+      <span class="title">政治与国际关系学院团委、学生会、融媒体中心联合招新通知</span>
+      <span class="d">2026.09</span>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="org">华中师范大学政治与国际关系学院团委 · 青年发展部</div>
+  <div>地址：华中师范大学文科科研楼南楼812 &nbsp;|&nbsp; 官方公众号：政国院团委青年发展部</div>
+  <div>© 2026 华中师范大学政治与国际关系学院团委 · 青年发展部 版权所有</div>
+</footer>
+
+<script>
+  var d = new Date();
+  var y = d.getFullYear(), m = d.getMonth() + 1, day = d.getDate();
+  var weeks = ["日","一","二","三","四","五","六"];
+  document.getElementById("today").textContent = y + "年" + m + "月" + day + "日 星期" + weeks[d.getDay()];
+</script>
+</body>
+</html>
