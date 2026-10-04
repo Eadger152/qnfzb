@@ -1,0 +1,22 @@
+# 忽略无关文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 临时与备份
+*.tmp
+*.bak
+*~
+_*.txt
+_*.py
+
+# 预览截图（如不希望上传可保留此行）
+_shots/
+
+# 旧版归档（不参与网站导航，如将来需要一并上传可删除这两行）
+single-page.html
+src/
+
+# 编辑器
+.vscode/
+.idea/
